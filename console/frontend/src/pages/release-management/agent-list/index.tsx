@@ -643,7 +643,7 @@ const AgentList: React.FC<AgentListProps> = ({ AgentType }) => {
           }
         />
         <Table
-          className={botList?.length === 0 ? styles.noData : ''}
+          className={botList?.length === 0 ? styles.noData : styles.customTable}
           loading={loading}
           dataSource={botList}
           columns={unifiedColumns}

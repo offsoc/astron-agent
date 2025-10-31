@@ -103,6 +103,12 @@
         .ant-table-tbody > tr > td {
           border-bottom: none !important;
         }
+
+        .ant-empty,
+        .ant-empty-normal {
+          display: flex !important;
+          flex-direction: column !important;
+        }
       }
     }
 
@@ -236,6 +242,181 @@
       }
     }
   }
+
+  .customTable {
+    :global {
+      .ant-table {
+        .ant-table-header {
+          border-radius: 10px 10px 0 0 !important;
+        }
+
+        .ant-table-placeholder {
+          height: calc(100vh - 340px) !important;
+        }
+      }
+
+      .ant-table-thead > tr > th {
+        background-color: #f1f0ff !important;
+        padding: 14px 20px !important;
+        color: #676773;
+      }
+
+      .ant-table-cell {
+        color: #222529;
+      }
+
+      .ant-table-tbody > tr.ant-table-row:hover > td,
+      .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+        background: rgba(#ffffff, 0.5);
+      }
+
+      .ant-table-header,
+      .ant-table-thead {
+        .ant-table-cell {
+          // border-radius: 10px 10px 0px 0px;
+          box-sizing: border-box;
+          /* 描边色 */
+          border-width: 0px 0px 1px 0px;
+          border-style: solid;
+          border-color: #e7e7f0;
+
+          font-family: PingFang SC;
+          font-size: 14px;
+          font-weight: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          /* 字体二级颜色 */
+          color: #676773;
+
+          border-bottom: none;
+          .froms {
+            display: flex;
+            justify-content: center;
+            .imgsReleaseType {
+              margin-right: 10px;
+            }
+          }
+          &::before {
+            display: none;
+          }
+        }
+        border-bottom: 1px solid #e4eaff;
+        border-radius: 16px 16px 0 0;
+      }
+      .ant-table-thead {
+        tr {
+          :first-child {
+            padding-left: 24px;
+          }
+        }
+      }
+      .ant-table-body {
+        scrollbar-color: #c9cde0 transparent;
+        scrollbar-width: thin;
+
+        tr:not([aria-hidden="true"]) > td {
+          padding: 20px !important;
+          font-family: "PingFang-Sim";
+          font-size: 14px;
+          font-weight: normal;
+          letter-spacing: normal;
+          /* 字体主色 */
+          color: #222529;
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 4px;
+          border-radius: 2px;
+          background-color: #c9cde0;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: transparent;
+        }
+      }
+      .ant-table-body {
+        height: max(120px, calc(100vh - 340px));
+      }
+
+      // 固定列样式
+      .ant-table-cell-fix-right {
+        background-color: #ffffff;
+        box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .ant-table-thead .ant-table-cell-fix-right {
+        background-color: #f1f0ff;
+      }
+    }
+    :global {
+      .ant-pagination-total-text {
+        margin-right: auto;
+        font-family: PingFang SC;
+        font-size: 14px;
+        font-weight: normal;
+        letter-spacing: normal;
+        /* 字体二级颜色 */
+        color: #676773;
+      }
+      .ant-pagination-options {
+        margin-left: auto;
+
+        .ant-select-selector {
+          border-color: #e7e7f0 !important;
+
+          .ant-select-selection-item {
+            font-family: "PingFang-Sim";
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 22px;
+            letter-spacing: normal;
+            /* 字体主色 */
+            color: #222529;
+          }
+        }
+
+        .ant-select-arrow {
+          color: #676773;
+        }
+      }
+      .ant-pagination {
+        padding: 0 20px !important;
+        color: #43436b;
+        margin: 20px 0 !important;
+      }
+
+      .ant-pagination-prev .ant-pagination-item-link,
+      .ant-pagination-next .ant-pagination-item-link {
+        background-color: transparent;
+        border-color: transparent;
+      }
+
+      .ant-pagination-item {
+        width: 32px;
+        height: 32px;
+        background: #fff;
+        border: none;
+        border-radius: 4px;
+        background: transparent;
+
+        a {
+          color: rgba(0, 0, 0, 0.6);
+        }
+        &.ant-pagination-item-active {
+          background: #efeefc;
+          color: #6356ea;
+          a {
+            color: #6356ea;
+          }
+        }
+      }
+    }
+  }
 }
 .stateWrap {
   display: inline-block;
@@ -334,18 +515,12 @@
       height: auto;
       width: auto;
     }
-    .ant-form-item-label
-      > label.ant-form-item-required:not(
-        .ant-form-item-required-mark-optional
-      )::before {
+    .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
       display: none;
     }
 
-    .ant-form-item-label
-      > label.ant-form-item-required:not(
-        .ant-form-item-required-mark-optional
-      )::after {
-      content: '*';
+    .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+      content: "*";
       color: red;
     }
 
@@ -360,10 +535,7 @@
       box-shadow: none;
     }
 
-    .ant-select-focused:not(.ant-select-disabled).ant-select:not(
-        .ant-select-customize-input
-      )
-      .ant-select-selector {
+    .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
       box-shadow: none;
     }
   }
